@@ -1,6 +1,6 @@
 # Inquiries
 
-Questions sent to [Abyssata](https://abyssata.blog), and her answers. Lives at ask.abyssata.blog, a sibling of Temenos (wiki.abyssata.blog) and Miscellany (misc.abyssata.blog).
+Questions sent to [Abyssata](https://abyssata.blog), and her answers. Lives at ask.abyssata.blog, a sibling of Temenos (garden.abyssata.blog) and Miscellany (misc.abyssata.blog).
 
 ## How a question reaches you
 
