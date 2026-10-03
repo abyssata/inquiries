@@ -1,0 +1,352 @@
+/* ═══════════════════════════════════════════════════════════════════
+   INQUIRIES · a sibling of Temenos and Miscellany
+   Same inks and typefaces: one narrow column with the ask box on top,
+   then each question and its answer, newest first.
+   ═══════════════════════════════════════════════════════════════════ */
+
+@font-face { font-family: "Spectral"; src: url("fonts/spectral-latin-400-normal.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: "Spectral"; src: url("fonts/spectral-latin-400-italic.woff2") format("woff2"); font-style: italic; font-weight: 400; font-display: swap; }
+@font-face { font-family: "Spectral"; src: url("fonts/spectral-latin-700-normal.woff2") format("woff2"); font-style: normal; font-weight: 700; font-display: swap; }
+@font-face { font-family: "Spectral"; src: url("fonts/spectral-latin-700-italic.woff2") format("woff2"); font-style: italic; font-weight: 700; font-display: swap; }
+@font-face { font-family: "STIX Two Text"; src: url("fonts/stix-two-text-latin-600-normal.woff2") format("woff2"); font-style: normal; font-weight: 600; font-display: swap; }
+
+:root {
+  --accent: #5c2229;          /* oxblood, as in the garden */
+  --accent-dark: #43161b;
+  --accent-line: rgba(92, 34, 41, 0.3);
+  --ink: #4a4a4a;             /* body text */
+  --quiet: #767676;           /* dates, captions */
+  --hairline: #e4e4e4;
+  --wash: #f6f5f4;            /* code, highlights */
+
+  --spectral: "Spectral", Georgia, serif;
+  --caps: "STIX Two Text", "Times New Roman", Times, serif;
+  --serif: "Times New Roman", Times, serif;
+
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--spectral);
+  font-size: 13px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: #efefef; color: #111; }
+
+main, .masthead, footer {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ── The name, like the garden's: spaced capitals, a comma, a hairline ── */
+.masthead { padding-top: 4.5rem; padding-bottom: 3.25rem; }
+
+.name {
+  margin: 0;
+  font: 600 1.2rem/1 var(--caps);
+  letter-spacing: 0.155em;
+  text-transform: uppercase;
+}
+
+.name a {
+  display: flex;
+  align-items: center;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.name a::before { content: ","; order: 1; letter-spacing: 0; }
+.name a::after { content: ""; order: 2; flex: 1; min-width: 2em; margin-left: 0.35em; border-top: 1px solid #d6d6d6; }
+
+.subtitle {
+  margin: 0.55rem 0 0;
+  font: italic 0.9rem/1.4 var(--spectral);
+  color: var(--quiet);
+}
+
+.subtitle a {
+  font: 600 0.72rem var(--caps);
+  font-style: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── The row of links beneath the subtitle: small capitals, like ABYSSATA ── */
+.sites { margin: 0.7rem 0 0; display: flex; flex-wrap: wrap; align-items: baseline; row-gap: 0.4rem; }
+.sites a {
+  font: 600 0.68rem var(--caps);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.sites .sep { margin: 0 0.6em; color: #c4c4c4; font: 0.68rem var(--caps); }
+
+/* ── Links ── */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-line);
+  padding-bottom: 1px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+a:hover { color: var(--accent-dark); border-bottom-color: var(--accent); }
+
+
+.answer > :first-child { margin-top: 0; }
+.answer > :last-child { margin-bottom: 0; }
+.answer p { margin: 0 0 0.8em; }
+
+/* justified, with hyphenation so the spacing stays even */
+.answer p, .answer li { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+
+/* links inside answers set like ABYSSATA beneath the name: small spaced capitals */
+.answer a {
+  font: 600 0.8em var(--caps);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.answer strong, .answer b { color: var(--accent); }
+.answer em { font-style: italic; }
+.answer mark { background: var(--wash); color: inherit; padding: 0 0.15em; }
+
+/* headings inside an answer, kept small */
+.answer h1, .answer h2, .answer h3, .answer h4, .answer h5, .answer h6 {
+  margin: 1.2em 0 0.4em;
+  font: 600 0.74rem/1.3 var(--caps);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.answer ul, .answer ol { margin: 0 0 0.8em; padding-left: 1.2em; }
+.answer li { margin: 0.15em 0; }
+.answer li::marker { color: var(--quiet); }
+
+.answer blockquote {
+  margin: 0.2em 0 0.9em;
+  padding: 0.05em 0 0.05em 1rem;
+  border-left: 1px solid var(--hairline);
+  font-size: 12.6px;                /* fixed, so it stays put if the body size changes */
+  font-style: italic;
+  color: #666;
+}
+.answer blockquote p { margin: 0 0 0.4em; text-align: left; }
+.answer blockquote p:last-child { margin-bottom: 0; }
+
+/* images sit plainly in the column, unframed */
+.answer img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.35em 0 0.9em;
+}
+
+.answer code {
+  font-size: 0.85em;
+  background: var(--wash);
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+  padding: 0.05em 0.3em;
+}
+.answer pre {
+  overflow-x: auto;
+  background: var(--wash);
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+  padding: 0.7em 0.9em;
+  line-height: 1.5;
+}
+.answer pre code { background: none; border: 0; padding: 0; }
+
+.answer hr { border: 0; border-top: 1px solid var(--hairline); margin: 1.2em 0; }
+
+.empty, .back {
+  font-style: italic;
+  color: var(--quiet);
+  padding: 1.5rem 0;
+}
+.back { padding-top: 1rem; }
+
+/* ALL INQUIRIES, ASK ANOTHER and the 404 page's link, set like ABYSSATA beneath the name */
+.back a, .empty a {
+  font: 600 0.72rem var(--caps);
+  font-style: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── The foot: search on the left, older and newer on the right ── */
+footer {
+  padding-top: 1.5rem;
+  padding-bottom: 3.5rem;
+}
+.foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* the search line, as in the garden: an italic "search", a single line beneath */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: 12rem;
+  max-width: 60%;
+  padding: 0 0 0.1rem;
+  border-bottom: 1px solid #d0d0d0;
+  transition: border-color 0.15s ease;
+}
+.search:hover, .search:focus-within { border-bottom-color: #444; }
+.search input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+  font: italic 0.9rem/1.15 var(--spectral);
+  color: var(--ink);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.search input::placeholder { color: var(--quiet); opacity: 1; }
+.search input::-webkit-search-cancel-button { display: none; }
+.search svg { width: 13px; height: 13px; flex: none; }
+.search svg path { stroke: var(--quiet); }
+
+/* NEWER and OLDER, set like ABYSSATA */
+.pager { display: flex; gap: 1.1rem; white-space: nowrap; }
+.pager a {
+  font: 600 0.72rem var(--caps);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* search results */
+.found { margin: 0 0 1.4rem; font: italic 0.85rem/1.4 var(--spectral); color: var(--quiet); }
+.answer mark.hit { background: #f1e7e8; padding: 0; }
+
+/* ── The ask box: a hairline frame, lines to write on ── */
+.ask {
+  margin: 0 0 3.25rem;
+  padding: 1.1rem 1.2rem 0.95rem;
+  border: 1px solid var(--hairline);
+}
+.ask-label {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0.55rem;
+  font: 600 0.72rem/1 var(--caps);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.ask-label::after { content: ""; flex: 1; min-width: 2em; margin-left: 0.8em; border-top: 1px solid var(--hairline); }
+.ask textarea, .ask input[type="text"] {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.3rem 0;
+  border: 0;
+  border-bottom: 1px solid #d0d0d0;
+  border-radius: 0;
+  outline: 0;
+  background: none;
+  font: 0.95rem/1.55 var(--spectral);
+  color: var(--ink);
+  resize: vertical;
+  transition: border-color 0.15s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.ask input[type="text"] { font-size: 0.88rem; }
+.ask textarea::placeholder, .ask input::placeholder { font-style: italic; color: #9a9a9a; opacity: 1; }
+.ask textarea:focus, .ask input[type="text"]:focus { border-bottom-color: var(--accent); }
+.ask-row { display: flex; align-items: flex-end; gap: 1.2rem; margin-top: 0.75rem; }
+.ask-row input { flex: 1; min-width: 0; }
+.ask button {
+  flex: none;
+  padding: 0.45rem 1.1rem 0.4rem;
+  border: 1px solid rgba(92, 34, 41, 0.35);
+  border-radius: 0;
+  background: none;
+  font: 600 0.7rem/1.2 var(--caps);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.ask button:hover, .ask button:focus-visible { background: var(--accent); border-color: var(--accent); color: #fff; outline: 0; }
+.ask button:disabled { opacity: 0.6; cursor: default; background: none; color: var(--accent); }
+.ask-note { margin: 0.8rem 0 0; font: italic 0.8rem/1.5 var(--spectral); color: var(--quiet); }
+.ask-note.error { color: var(--accent); }
+/* the trap for bots: hidden from people */
+.botcheck { display: none; }
+
+/* after sending: the circle, and a word of thanks */
+.ask.sent { text-align: center; padding: 1.6rem 1.2rem 1.2rem; }
+.sent-mark { margin: 0; color: var(--accent); font-size: 1.05rem; line-height: 1; }
+.sent-text { margin: 0.6rem 0 0; font: italic 0.95rem/1.5 var(--spectral); }
+.ask.sent .back { padding: 0.6rem 0 0; }
+
+/* ── A question and its answer ── */
+.inquiry { margin: 0 0 1.6rem; }
+/* a small circle between one and the next */
+.inquiry + .inquiry::before {
+  content: "☉";
+  display: block;
+  margin: 0 0 1.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: #c9b5b7;
+}
+.question { font: italic 1.05rem/1.5 var(--spectral); color: var(--accent); }
+.question p { margin: 0 0 0.3em; }
+.question p:last-child { margin-bottom: 0; }
+.question em { font-style: normal; }
+.question a { font-style: normal; }
+
+/* who asked, and when (the date links to the answer on its own) */
+.who {
+  margin: 0.35rem 0 0.75rem;
+  font: 0.64rem/1.4 var(--serif);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--quiet);
+}
+.who .dot { margin: 0 0.5em; color: #c4c4c4; }
+.who a { color: var(--quiet); border-bottom-color: #dcdcdc; }
+.who a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+.empty { text-align: center; }
+
+/* an answer on its own page */
+.single .inquiry { margin-bottom: 0; }
+.single .question { font-size: 1.15rem; }
+.back .sep { margin: 0 0.6em; color: #c4c4c4; font-style: normal; }
+
+@media (max-width: 600px) {
+  .masthead { padding-top: 2.5rem; padding-bottom: 2.25rem; }
+  .ask { padding: 1rem 1rem 0.85rem; }
+  .ask-row { flex-direction: column; align-items: stretch; gap: 0.9rem; }
+  .ask button { align-self: flex-end; }
+  /* a ragged right edge reads better in a narrow column */
+  .answer p, .answer li { text-align: left; hyphens: manual; -webkit-hyphens: manual; }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "inquiries",
+  "description": "Inquiries: questions sent to Abyssata, and her answers",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node build.mjs && cd public && python3 -m http.server 8080"
+  },
+  "dependencies": {
+    "marked": "^15.0.12"
+  },
+  "private": true,
+  "type": "module"
+}

@@ -1,0 +1,11 @@
+node_modules/
+public/
+.DS_Store
+.obsidian/workspace*
+.trash/
+
+# mockups and other files the Claude app saves here
+Claude outputs/
+
+# private notes: never pushed, never published
+private/
